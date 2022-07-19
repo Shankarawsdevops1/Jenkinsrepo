@@ -14,12 +14,9 @@ pipeline {
         
         stage('Checkout code from Git') {
             steps {
+                 
+                 {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example","master")}}}
                 
-                     parallel (
-                "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven","master")}}},
-                "2": {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example","master")}}},
-                "3": {dir("hello-world-war"){script {checkout_git.checkout_git("hello-world-war","master")}}}
-                )
                 
             }
         }
@@ -28,13 +25,23 @@ pipeline {
         stage('aws code build') {
             steps {
                  
-                     parallel (
-                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-project-2", "${tag}")}}},
-                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4", "${tag}")}}},
-                "3": {dir("hello-world-war"){script {awscodebuild.awscodebuild("java-project-5", "${tag}")}}}
-                )
+                                      
+                 {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4", "${tag}")}}}
+                 
+                
             }
         } 
+
+
+      
+        stage('deploy java to tomcat') {
+            steps {
+                     sh "echo env is ${ENVIRONMENT} "
+                    script {deploy_tomcat.deploy_tomcat("${tag}", "${ENVIRONMENT}")}
+                
+            }
+        }   
     } 
+
     
 }
