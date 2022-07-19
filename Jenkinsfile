@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout code from Git') {
             steps {
                  
-                 {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example","master")}}}
+                 dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example","master")}}
                 
                 
             }
