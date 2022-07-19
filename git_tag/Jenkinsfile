@@ -1,0 +1,46 @@
+ @Library('myLibrary') _
+pipeline {
+    agent any
+    
+    stages {
+        
+         stage('Checkout code from Git') {
+            steps {  
+
+                
+                     parallel (
+                "1": {dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven", "master")}}},
+                "2": {dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example", "master")}}}
+                )
+            }
+        }
+
+        stage('create tag on git repo') {
+            steps { 
+
+                     parallel (
+                "1": {dir("java-hello-world-with-maven"){script {create_tag.create_tag("${tag}")}}},
+                "2": {dir("sparkjava-war-example"){script {create_tag.create_tag("${tag}")}}}
+                )
+
+
+            }
+        }
+
+          
+        stage('Trigger AWS Code Build') {
+            steps {
+
+                
+                     parallel (
+                "1": {dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-project-2", "${tag}")}}},
+                "2": {dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4", "${tag}")}}}
+                )
+           
+               
+            }
+        }                             
+        
+    }
+
+}
