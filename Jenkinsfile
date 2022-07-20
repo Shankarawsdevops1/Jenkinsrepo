@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout code from Git') {
             steps {
                  
-                 dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example","master")}}
+                 dir("hello-world-war"){script {checkout_git.checkout_git("hello-world-war","master")}}
                 
                 
             }
@@ -26,7 +26,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-4", "${tag}")}}
+                 dir("hello-world-war"){script {awscodebuild.awscodebuild("java-project-5", "${tag}")}}
                  
                 
             }
