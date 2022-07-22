@@ -26,7 +26,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("hello-world-war"){script {awscodebuild.awscodebuild("java-project-5", "${tag}")}}
+                 dir("hello-world-war"){script {awscodebuild.awscodebuild("java-project-6", "${tag}")}}
                  
                 
             }
