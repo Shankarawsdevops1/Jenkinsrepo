@@ -23,7 +23,7 @@ pipeline {
         
         stage('create tag on git repo') {
             steps {                                
-                 dir("tag_code") {                        
+                 dir("hello-world-war") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
             }
