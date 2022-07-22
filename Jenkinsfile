@@ -21,6 +21,13 @@ pipeline {
             }
         }
         
+        stage('create tag on git repo') {
+            steps {                                
+                 dir("tag_code") {                        
+                script {create_tag.create_tag("${tag}")}                
+                 }
+            }
+        }
         
         stage('aws code build') {
             steps {
