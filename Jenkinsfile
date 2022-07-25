@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout code from Git') {
             steps {
                  
-                 dir("hello-world-war"){script {checkout_git.checkout_git("hello-world-war","master")}}
+                 dir("war-web-project"){script {checkout_git.checkout_git("war-web-project","master")}}
                 
                 
             }
@@ -23,7 +23,7 @@ pipeline {
         
         stage('create tag on git repo') {
             steps {                                
-                 dir("hello-world-war") {                        
+                 dir("war-web-project") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
             }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("hello-world-war"){script {awscodebuild.awscodebuild("java-project-6", "${tag}")}}
+                 dir("war-web-project"){script {awscodebuild.awscodebuild("java-project-7", "${tag}")}}
                  
                 
             }
