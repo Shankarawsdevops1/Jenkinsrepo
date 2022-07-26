@@ -1,7 +1,7 @@
 #!/bin/bash
 tag=$1
 env=$2
-
+ 
 IP=`grep $env env.properties | cut -d ':' -f2 |tr -d "[:space:]"`
 
 mkdir /var/lib/jenkins/practice
