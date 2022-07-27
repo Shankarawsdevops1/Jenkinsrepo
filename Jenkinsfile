@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout code from Git') {
             steps {
                  
-                 dir("java-hello-world-with-maven"){script {checkout_git.checkout_git("java-hello-world-with-maven","master")}}
+                 dir("boxfuse-sample-java-war-hello"){script {checkout_git.checkout_git("boxfuse-sample-java-war-hello","master")}}
                 
                 
             }
@@ -23,7 +23,7 @@ pipeline {
         
         stage('create tag on git repo') {
             steps {                                
-                 dir("java-hello-world-with-maven") {                        
+                 dir("boxfuse-sample-java-war-hello") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
             }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("java-hello-world-with-maven"){script {awscodebuild.awscodebuild("java-project-jar", "${tag}")}}
+                 dir("boxfuse-sample-java-war-hello"){script {awscodebuild.awscodebuild("java-project-9", "${tag}")}}
                  
                 
             }
