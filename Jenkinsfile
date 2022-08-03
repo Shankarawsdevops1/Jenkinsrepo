@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout code from Git') {
             steps {
                  
-                 dir("boxfuse-sample-java-war-hello"){script {checkout_git.checkout_git("boxfuse-sample-java-war-hello","master")}}
+                 dir("spring-boot-war-example"){script {checkout_git.checkout_git("spring-boot-war-example","master")}}
                 
                 
             }
@@ -23,7 +23,7 @@ pipeline {
         
         stage('create tag on git repo') {
             steps {                                
-                 dir("boxfuse-sample-java-war-hello") {                        
+                 dir("spring-boot-war-example") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
             }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("boxfuse-sample-java-war-hello"){script {awscodebuild.awscodebuild("java-project-9", "${tag}")}}
+                 dir("spring-boot-war-example"){script {awscodebuild.awscodebuild("java-project-10", "${tag}")}}
                  
                 
             }
