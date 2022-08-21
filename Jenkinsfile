@@ -33,7 +33,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("spring-boot-war-example"){script {awscodebuild.awscodebuild("java-project-10", "${tag}")}}
+                 dir("spring-boot-war-example"){script {awscodebuild.awscodebuild("java-project-1", "${tag}")}}
                  
                 
             }
