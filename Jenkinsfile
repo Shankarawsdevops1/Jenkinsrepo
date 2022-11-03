@@ -33,7 +33,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("project", "${tag}")}}
+                 dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-1", "${tag}")}}
                  
                 
             }
