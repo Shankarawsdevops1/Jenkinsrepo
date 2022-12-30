@@ -12,5 +12,5 @@ ssh ec2-user@${IP} << HERE
     rm -rf /home/ec2-user/tomcat/work
     cd /home/ec2-user/tomcat/bin/
     ./shutdown.sh
-    ./startup.sh
- HERE
+    ./startup.sh  
+HERE
