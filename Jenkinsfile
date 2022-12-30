@@ -15,7 +15,7 @@ pipeline {
         stage('Checkout code from Git') {
             steps {
                  
-                 dir("sparkjava-war-example"){script {checkout_git.checkout_git("sparkjava-war-example","master")}}
+                 dir("spring-boot-war-example"){script {checkout_git.checkout_git("spring-boot-war-example","master")}}
                 
                 
             }
@@ -23,7 +23,7 @@ pipeline {
         
         stage('create tag on git repo') {
             steps {                                
-                 dir("sparkjava-war-example") {                        
+                 dir("spring-boot-war-example") {                        
                 script {create_tag.create_tag("${tag}")}                
                  }
             }
@@ -33,7 +33,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("sparkjava-war-example"){script {awscodebuild.awscodebuild("java-project-1", "${tag}")}}
+                 dir("spring-boot-war-example"){script {awscodebuild.awscodebuild("java-project-1", "${tag}")}}
                  
                 
             }
