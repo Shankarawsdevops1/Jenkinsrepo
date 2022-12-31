@@ -8,4 +8,4 @@ ssh ec2-user@14.0.0.107  << HERE
     cd /home/ec2-user/apache-tomcat-9.0.70/bin/
     ./shutdown.sh
     ./startup.sh
-HERE
+ HERE
