@@ -38,8 +38,8 @@ pipeline {
                 
             }
         } 
-        
-        stage('deploy java to tomcat') {
+
+         stage('deploy java to tomcat') {
             steps {
                      sh "echo env is ${ENVIRONMENT} "
                     script {deploy_tomcat.deploy_tomcat("${tag}", "${ENVIRONMENT}")}
