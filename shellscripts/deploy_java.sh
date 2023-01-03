@@ -2,8 +2,8 @@
 tag=$1
 env=$2
 IP=`grep $env env.properties | cut -d ':' -f2 |tr -d "[:space:]"`
-mkdir /var/lib/jenkins/artifacts
-cd /var/lib/jenkins/artifacts
+mkdir /var/lib/jenkins/shankar
+cd /var/lib/jenkins/shankar
 aws s3 cp s3://shankar-gajula/$tag/java-code-3/sparkjava-hello-world-1.0.war .
 scp sparkjava-hello-world-1.0.war ec2-user@${IP}:/home/ec2-user/tomcat/apache-tomcat-9.0.70/webapps
 ssh ec2-user@${IP} << HERE
