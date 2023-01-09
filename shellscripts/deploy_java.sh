@@ -2,6 +2,7 @@
 tag=$1
 env=$2
 IP=`grep $env env.properties | cut -d ':' -f2 |tr -d "[:space:]"`
+echo $IP
 mkdir /var/lib/jenkins/deploy
 cd /var/lib/jenkins/deploy
 aws s3 cp s3://shankar-gajula/$tag/java-code-2/hello-world-0.0.1-SNAPSHOT.war .
