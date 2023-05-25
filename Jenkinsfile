@@ -33,19 +33,13 @@ pipeline {
             steps {
                  
                                       
-                 dir("boxfuse-sample-java-war-hello"){script {awscodebuild.awscodebuild("java-project-6", "${tag}")}}
+                 dir("boxfuse-sample-java-war-hello"){script {awscodebuild.awscodebuild("java-project-1", "${tag}")}}
                  
                 
             }
         } 
 
-         stage('deploy java to tomcat') {
-            steps {
-                     sh "echo env is ${ENVIRONMENT} "
-                    script {deploy_tomcat.deploy_tomcat("${tag}", "${ENVIRONMENT}")}
-                
-            }
-        }
+          
 
        
     } 
