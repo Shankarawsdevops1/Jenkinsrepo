@@ -10,7 +10,7 @@ pipeline {
 
                 dir("tag_code") {                              
                                          
-                script {checkout_git.checkout_git("hello-world-war", "master")}                
+                script {checkout_git.checkout_git("spring-boot-war-example", "master")}                
                 }
             }
         }

@@ -1,16 +1,15 @@
- #!/bin/bash
 tag=$1
 env=$2
-
 IP=`grep $env env.properties | cut -d ':' -f2 |tr -d "[:space:]"`
-
-mkdir /var/lib/jenkins/deploy
+echo $IP
+#mkdir /var/lib/jenkins/deploy
 cd /var/lib/jenkins/deploy
-aws s3 cp s3://shankargajula/java-code-1/$tag/sparkjava-hello-world-1.0.war .
-scp  sparkjava-hello-world-1.0.war ec2-user@${IP}:/home/ec2-user/tomcat/webapps
-ssh ec2-user@${IP} << HERE
-    rm -rf /home/ec2-user/tomcat/work
-    cd /home/ec2-user/tomcat/bin/
+/usr/bin/aws s3 cp s3://shankar-gajula/${tag}/java-code-2/hello-1.0.war .
+scp  hello-1.0.war ubuntu@${IP}:/home/ubuntu/tomcat/apache-tomcat-9.0.75/webapps
+ssh ubuntu@${IP} << HERE
+    rm -rf /home/ubuntu/tomcat/apache-tomcat-9.0.75/work
+    cd /home/ubuntu/tomcat/apache-tomcat-9.0.75/bin/
     ./shutdown.sh
     ./startup.sh
+
 HERE
