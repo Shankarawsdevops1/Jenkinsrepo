@@ -33,7 +33,7 @@ pipeline {
             steps {
                  
                                       
-                 dir("boxfuse-sample-java-war-hello"){script {awscodebuild.awscodebuild("java-project-1", "${tag}")}}
+                 dir("boxfuse-sample-java-war-hello"){script {awscodebuild.awscodebuild("java-project-2", "${tag}")}}
                  
                 
             }
